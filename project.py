@@ -19,18 +19,6 @@ def url_for_station_by_id(id):
     return f"https://www.chronotrains.com/api/station/{id}"
 
 
-def read_stations_from_file() -> dict[int, Station]:
-    stations = {}
-    with open("stations.json") as f:
-        data = json.load(f)
-    station_list = [Station(**item) for item in data["stations"]]
-    for station in station_list:
-        # if station.rank > 5:
-        #     continue
-        if station.population < 100000 and station.rank > 5:
-            continue
-        stations[station.id] = station
-    return stations
 
 
 def draw_map(stations: dict[int, Station]) -> None:
