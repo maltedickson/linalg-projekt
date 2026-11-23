@@ -29,7 +29,7 @@ def main():
         station_ids.add(id)
     all_routes: dict[int, list[int]] = dict()
     for id in station_ids:
-        from_current_station = fetch_routes_from_station(station_ids, 2673730)
+        from_current_station = fetch_routes_from_station(station_ids, id)
         all_routes[id] = from_current_station
         time.sleep(0.1)
     print(json.dumps({"routes": all_routes}, indent=4))
