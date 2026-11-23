@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import requests
 from mpl_toolkits.basemap import Basemap
+import station
 
 from station import Station
 
@@ -53,7 +54,7 @@ def draw_map(stations: dict[int, Station]) -> None:
 
 
 def main():
-    stations = read_stations_from_file()
+    stations = station.read_stations_from_file()
     print(len(stations))
     draw_map(stations)
 
