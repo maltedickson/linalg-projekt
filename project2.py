@@ -12,15 +12,6 @@ import sys
 import numpy
 
 
-def url_for_suggestions_from_station_by_id(id):
-    return (
-        f"https://www.chronotrains.com/api/station/{id}/suggestions?lang=en&mode=direct"
-    )
-
-
-def url_for_station_by_id(id):
-    return f"https://www.chronotrains.com/api/station/{id}"
-
 
 def read_routes_from_file() -> dict[int, list[int]]:
     with open("routes.json") as f:
