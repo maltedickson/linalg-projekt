@@ -1,15 +1,8 @@
 import json
 from dataclasses import dataclass
 
-#import matplotlib.pyplot as plt
 import numpy as np
-import requests
-#from mpl_toolkits.basemap import Basemap
 import station
-
-from station import Station
-import sys
-import numpy
 
 
 
@@ -40,7 +33,6 @@ def main():
 
     v = np.zeros(len(stations), dtype=int)
     v[id_to_index[2673730]] = 1
-    # print(v)
 
     from_stockholm = matrix @ v
 
@@ -49,25 +41,6 @@ def main():
             print(stations[stations_list[i]].name)
 
 
-
-    # print(matrix)
-
-
-    print(len(stations))
-    # draw_map(stations)
-
-
 if __name__ == "__main__":
     main()
 
-# for i in range(2):
-#     res = requests.get(
-#         url_for_suggestions_from_station_by_id(START_STATION_ID)
-#     )
-#     res.raise_for_status()
-#     data = res.json()
-#     for suggestion in data["suggestions"]:
-#         dest = suggestion["destination"]
-#         if dest["countryCode"] == "FR":
-#             continue
-#         print(dest["name"])
