@@ -2,7 +2,7 @@ import dataclasses
 import json
 
 import requests
-#tåg
+#tåget
 from station import Station
 
 
