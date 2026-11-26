@@ -19,7 +19,7 @@ def read_stations_from_file() -> dict[int, Station]:
     for station in station_list:
         # if station.rank > 5:
         #     continue
-        if station.population < 100000 and station.rank > 5:
+        if (station.population < 100000 and station.rank > 5) or station.rank > 20:
             continue
         stations[station.id] = station
     return stations
