@@ -2,6 +2,7 @@ import json
 from dataclasses import dataclass
 
 import numpy as np
+import math
 import station
 from station import Station
 from country_codes import country_codes
@@ -44,14 +45,18 @@ def filter_destinations():
         return "distance"
 
 def station_distance(station1: Station, station2: Station) -> float:
-    pass
-
+    R = 6371
+    delta_lat = math.radians(station2.latitude - station1.latitude)
+    delta_lon = math.radians(station2.longitude - station1.longitude)
+    a = math.sin(delta_lat/2)**2 + math.cos(math.radians(station1.latitude)) * math.cos(math.radians(station2.latitude)) * math.sin(delta_lon/2)**2
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    return R * c
 
 def sort_destinations(destinations: list[Station], filter: str) -> list[Station]:
     if filter == "population":
         return sorted(destinations, key=lambda station: station.population, reverse=True)
     elif filter == "distance":
-        return sorted(destinations, key=lambda station: station_distance(station, start_station))
+        return sorted(destinations, key=lambda station: station_distance(station, start_station), reverse=True)
         
 
 def main():
